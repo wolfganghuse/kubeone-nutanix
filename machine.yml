@@ -1,0 +1,52 @@
+apiVersion: cluster.k8s.io/v1alpha1
+kind: MachineDeployment
+metadata:
+  creationTimestamp: null
+  name: wh-2-pool1
+  namespace: kube-system
+spec:
+  minReadySeconds: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      workerset: wh-2-pool1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        workerset: wh-2-pool1
+      namespace: kube-system
+    spec:
+      metadata:
+        creationTimestamp: null
+        labels:
+          workerset: wh-2-pool1
+      providerSpec:
+        value:
+          cloudProvider: nutanix
+          cloudProviderSpec:
+            categories:
+              KubeOneCluster: wh-2
+            clusterName: PHX-SPOC003-4
+            cpuCores: 2
+            cpus: 1
+            diskSize: 50
+            imageName: ubuntu-20.04
+            allowInsecure: true
+            memoryMB: 4096
+            projectName: default
+            subnetName: IPAM
+          operatingSystem: ubuntu
+          operatingSystemSpec:
+            distUpgradeOnBoot: false
+          sshPublicKeys:
+          - |
+            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3wSpccH1BeODfXBLBcqJnccKlgMZ1XqXgUdwtwCH/jQqs95TVJwabdsCNO6QF5x+QRLmxAQmlDFVN4L4mSt5Sgy9AO+MwzUV7yc340ni+BnGoTCk60l1ARjyXdj2l01qEhFSdKjE79uHsqAzQIW6DaKOPD9L6rOGtWlJdj74KiDL24vEv+6MmWH7y3Mz8/Glazb7Emkd/RnYxlPBeOY7euWeyCdVHOKR1wZQXpj8lrd/x+fzdodWSWB9jKoT5rRnrBBYU6BNDU8nbhpWL76lwJ0MXuyK7v05NbRONhnIjwgLuY1FclHOtDcrzwiWZ6HO5KpPxeTvCn2NP1AnRxzM71i+fV/LvBMUoaEsGw7g64I7hUQs83rQhuSe9DSEHrYA3mWUCGn8TKfI7RRXqiH+oI/F0zSbPG5fUH4WTpqtV43RprRyXfWx3PP/AfcE7R6OsI5t/wJpGODzQVZif1n0sKXeAkNjRFZZIcI5BWmMmvVp0MP3GOiOAUcw7bmoImsk= wolfgang.huse@C02WF0Z7HV2Q
+      versions:
+        kubelet: 1.23.1
+status: {}
