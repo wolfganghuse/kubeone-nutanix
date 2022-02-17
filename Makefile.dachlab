@@ -2,10 +2,10 @@
 
 NAME ?= template
 
-export NUTANIX_PE_ENDPOINT=pe.rtp-poc043.dachlab.net
+export NUTANIX_PE_ENDPOINT=ntnx-demo01.dachlab.net
 export NUTANIX_PE_USERNAME=admin
 export NUTANIX_PE_PASSWORD=nx2Tech100!
-export NUTANIX_ENDPOINT=pc.rtp-poc043.dachlab.net
+export NUTANIX_ENDPOINT=pcdemo.dachlab.net
 export NUTANIX_USERNAME=admin
 export NUTANIX_PASSWORD=nx2Tech100!
 export NUTANIX_PORT=9440

@@ -1,0 +1,30 @@
+apiVersion: kubeone.k8c.io/v1beta2
+kind: KubeOneCluster
+versions:
+  kubernetes: 1.23.1
+cloudProvider:
+  nutanix: {}
+addons:
+  enable: true
+  addons:
+  - name: "csi-nutanix"
+  - name: "default-storage-class"
+    params:
+      storageContainer: "Default"
+      fsType: "xfs"
+      isSegmentedIscsiNetwork: "false"
+containerRuntime:
+  containerd:
+    registries:
+      docker.io:
+        mirrors:
+        - https://harbor.dachlab.net/v2/proxy.docker.io/
+      k8s.gcr.io:
+        mirrors:
+        - https://harbor.dachlab.net/v2/proxy.k8s.gcr.io/
+      gcr.io:
+        mirrors:
+        - https://harbor.dachlab.net/v2/proxy.gcr.io/
+      quay.io:
+        mirrors:
+        - https://harbor.dachlab.net/v2/proxy.quay.io/

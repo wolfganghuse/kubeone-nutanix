@@ -1,0 +1,5 @@
+image_name = "ubuntu-20.04"
+nutanix_cluster_name = "NTNX-DEMO01"
+project_name = "default"
+subnet_name = "NTNX-DEMO01_IPAM"
+ssh_public_key_file = "~/.ssh/dachlab.pub"
